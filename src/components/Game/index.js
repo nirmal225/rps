@@ -71,20 +71,16 @@ class Game extends Component {
       playerEmoji: id,
     })
 
-    if (
-      (id === 'ROCK' && randomEmoji === 'ROCK') ||
-      (id === 'PAPER' && randomEmoji === 'PAPER') ||
-      (id === 'SCISSORS' && randomEmoji === 'SCISSORS')
-    ) {
+    if (id === randomEmoji) {
       this.setState(prevState => ({
         score: prevState.score + 0,
         isPlaying: !prevState.isPlaying,
         status: 'IT IS DRAW',
       }))
     } else if (
-      (id === 'ROCK' && randomEmoji === 'SCISSOR') ||
-      (id === 'PAPER' && randomEmoji === 'ROCK') ||
-      (id === 'SCISSORS' && randomEmoji === 'PAPER')
+      (id === 'ROCK' && randomEmoji === 'PAPER') ||
+      (id === 'PAPER' && randomEmoji === 'SCISSOR') ||
+      (id === 'SCISSORS' && randomEmoji === 'ROCK')
     ) {
       this.setState(prevState => ({
         score: prevState.score - 1,
@@ -98,12 +94,6 @@ class Game extends Component {
         status: 'YOU WIN',
       }))
     }
-
-    this.setState({
-      gameEmoji: randomEmoji,
-      playerEmoji: id,
-    })
-  }
 
   renderGameView = () => (
     <div className="game-details-container">
